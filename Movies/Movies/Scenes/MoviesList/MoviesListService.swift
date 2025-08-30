@@ -10,10 +10,10 @@ import Foundation
 
 struct MoviesAPIEndpoint: APIEndpoint {
     var path: String {
-        "discover/movie"
+        "/3/discover/movie"
     }
         
-    var items: [String: Any] {
+    var items: [String: String] {
         [
             "include_video": "false",
             "include_adult": "false",
@@ -22,7 +22,11 @@ struct MoviesAPIEndpoint: APIEndpoint {
     }
 }
 
-struct MoviesListService {
+protocol MoviesListServicing {
+    func fetchMovies() async throws -> MoviesResponse
+}
+
+struct MoviesListService: MoviesListServicing {
     private let network: CoreNetworking
     
     init(network: CoreNetworking = CoreNetwork()) {
