@@ -55,7 +55,6 @@ final class MovieDetailsViewController: UIViewController {
     
     required init?(coder: NSCoder) { nil }
     
-    // MARK: - Ciclo de Vida da View
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
