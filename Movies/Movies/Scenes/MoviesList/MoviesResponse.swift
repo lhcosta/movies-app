@@ -14,9 +14,10 @@ struct MoviesResponse {
     let totalResults: Int
 }
 
-struct Movie: Identifiable {
+struct Movie: Identifiable, Hashable {
     let id: Int
     let imagePath: String?
     let release: String
     let title: String
+    let overview: String
 }

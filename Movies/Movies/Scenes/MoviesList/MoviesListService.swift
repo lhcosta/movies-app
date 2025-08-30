@@ -61,12 +61,19 @@ private extension MoviesListService {
         let posterPath: String?
         let releaseDate: String
         let title: String
+        let overview: String
     }
 }
 
 private extension MoviesListService.MovieDecodable {
     var movies: Movie {
-        .init(id: id, imagePath: posterPath, release: releaseDate, title: title)
+        .init(
+            id: id,
+            imagePath: posterPath,
+            release: releaseDate,
+            title: title,
+            overview: overview
+        )
     }
 }
 
