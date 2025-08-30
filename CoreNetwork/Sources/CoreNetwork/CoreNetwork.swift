@@ -14,6 +14,15 @@ public protocol CoreNetworking {
     ) async throws -> Model
 }
 
+public extension CoreNetworking {
+    func request<Model: Decodable>(
+        type: Model.Type,
+        endpoint: APIEndpoint
+    ) async throws -> Model {
+        try await request(type: type, endpoint: endpoint, decoder: JSONDecoder())
+    }
+}
+
 public final class CoreNetwork: CoreNetworking {
     private let session: URLSession
     
