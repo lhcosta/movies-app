@@ -14,7 +14,7 @@ struct MoviesResponse {
     let totalResults: Int
 }
 
-struct Movie {
+struct Movie: Identifiable {
     let id: Int
     let imagePath: String?
     let release: String
