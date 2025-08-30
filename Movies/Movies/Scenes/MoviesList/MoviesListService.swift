@@ -6,6 +6,7 @@
 //
 
 import CoreNetwork
+import Foundation
 
 struct MoviesAPIEndpoint: APIEndpoint {
     var path: String {
@@ -28,7 +29,15 @@ struct MoviesListService {
     }
     
     func fetchMovies() async throws -> MoviesResponse {
-        let result = try await network.request(type: MoviesListService.Root.self, endpoint: MoviesAPIEndpoint())
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
+        let result = try await network.request(
+            type: MoviesListService.Root.self,
+            endpoint: MoviesAPIEndpoint(),
+            decoder: decoder
+        )
+        
         return result.mapToResponse
     }
 }
