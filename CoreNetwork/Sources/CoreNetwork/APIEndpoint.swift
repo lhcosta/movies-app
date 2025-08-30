@@ -31,7 +31,6 @@ extension APIEndpoint {
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         request.httpBody = body
-
         return request
     }
 }

@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A4B8C4BC2E62B335005D98F5 /* CoreNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = A4B8C4BB2E62B335005D98F5 /* CoreNetwork */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		A4B8C49E2E62B085005D98F5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4B8C4BC2E62B335005D98F5 /* CoreNetwork in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 				A4B8C4922E62B07F005D98F5 /* Movies */,
 				A4B8C4A02E62B085005D98F5 /* MoviesTests */,
 				A4B8C4AA2E62B086005D98F5 /* MoviesUITests */,
+				A4B8C4BA2E62B335005D98F5 /* Frameworks */,
 				A4B8C4912E62B07F005D98F5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +96,13 @@
 				A4B8C4A72E62B086005D98F5 /* MoviesUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A4B8C4BA2E62B335005D98F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,6 +125,7 @@
 			);
 			name = Movies;
 			packageProductDependencies = (
+				A4B8C4BB2E62B335005D98F5 /* CoreNetwork */,
 			);
 			productName = Movies;
 			productReference = A4B8C4902E62B07F005D98F5 /* Movies.app */;
@@ -550,6 +564,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A4B8C4BB2E62B335005D98F5 /* CoreNetwork */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreNetwork;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A4B8C4882E62B07F005D98F5 /* Project object */;
 }
