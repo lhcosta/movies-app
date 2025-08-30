@@ -27,7 +27,42 @@ struct MoviesListService {
         self.network = network
     }
     
-    func fetchMovies() async throws -> [Int] {
-        try await network.request(type: [Int].self, endpoint: MoviesAPIEndpoint())
+    func fetchMovies() async throws -> MoviesResponse {
+        let result = try await network.request(type: MoviesListService.Root.self, endpoint: MoviesAPIEndpoint())
+        return result.mapToResponse
+    }
+}
+
+// MARK: Decodable models
+private extension MoviesListService {
+    struct Root: Decodable {
+        let page: Int
+        let results: [MovieDecodable]
+        let totalPages: Int
+        let totalResults: Int
+    }
+    
+    struct MovieDecodable: Decodable {
+        let id: Int
+        let posterPath: String?
+        let releaseDate: String
+        let title: String
+    }
+}
+
+private extension MoviesListService.MovieDecodable {
+    var movies: Movie {
+        .init(id: id, imagePath: posterPath, release: releaseDate, title: title)
+    }
+}
+
+private extension MoviesListService.Root {
+    var mapToResponse: MoviesResponse {
+        .init(
+            page: page,
+            results: results.map(\.movies),
+            totalPages: totalPages,
+            totalResults: totalResults
+        )
     }
 }
