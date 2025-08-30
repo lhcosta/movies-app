@@ -16,7 +16,8 @@ struct MoviesAPIEndpoint: APIEndpoint {
     var items: [String: Any] {
         [
             "include_video": "false",
-            "include_adult": "false"
+            "include_adult": "false",
+            "language": "pt-BR"
         ]
     }
 }
