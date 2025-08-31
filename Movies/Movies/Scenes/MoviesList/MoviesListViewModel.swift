@@ -16,8 +16,7 @@ struct MoviePresentable: Hashable, Identifiable {
     }
     
     var url: URL? {
-        guard let imagePath = movie.imagePath else { return nil }
-        return URL(string: "https://image.tmdb.org/t/p/original\(imagePath)")
+        ImageURLFactory.make(path: movie.imagePath)
     }
     
     var title: String {
@@ -29,9 +28,16 @@ enum MoviesListError: Error {
     case movieNotFound
 }
 
+enum MovieListViewState {
+    case loading
+    case success([MoviePresentable])
+    case failure
+    case empty
+}
+
 @Observable
 final class MoviesListViewModel {
-    var movies: [MoviePresentable] = []
+    var state: MovieListViewState = .empty
     private let service: MoviesListServicing
     
     @ObservationIgnored
@@ -44,18 +50,20 @@ final class MoviesListViewModel {
     @MainActor
     func fetch() async {
         do {
+            state = .loading
             let response = try await service.fetchMovies()
             results = response.results
-            movies = response.results.map { MoviePresentable(movie: $0) }
+            let movies = response.results.map { MoviePresentable(movie: $0) }
+            state = movies.isEmpty ? .empty : .success(movies)
         } catch {
-            print(error)
+            state = .failure
         }
     }
     
     func selectMovie(with id: Int) -> MovieDetails {
         let movie = results.first(where: { $0.id == id })!
         return MovieDetails(
-            imageURL: movie.imagePath,
+            imageURL: ImageURLFactory.make(path: movie.imagePath),
             description: movie.overview,
             title: movie.title,
             releaseDate: movie.release

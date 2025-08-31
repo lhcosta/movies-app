@@ -7,7 +7,12 @@
 import Foundation
 
 protocol MovieDetailsDelegate: AnyObject {
-    func updateView(title: String, subtitle: String, description: String)
+    func updateView(
+        title: String,
+        subtitle: String,
+        description: String,
+        imageURL: URL?
+    )
 }
 
 protocol MovieDetailsViewModeling {
@@ -32,7 +37,8 @@ final class MovieDetailsViewModel: MovieDetailsViewModeling {
         delegate?.updateView(
             title: details.title,
             subtitle: details.description,
-            description: "Criado em \(dateFormatter.string(from: details.releaseDate))"
+            description: "Criado em \(dateFormatter.string(from: details.releaseDate))",
+            imageURL: details.imageURL
         )
     }
 }
