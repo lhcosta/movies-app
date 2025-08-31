@@ -8,30 +8,28 @@
 import SwiftUI
 
 struct MoviesListView: View {
-    @State private var viewModel: MoviesListViewModel
-    
-    private let columns = [
-        GridItem(.flexible(), spacing: 8),
-        GridItem(.flexible(), spacing: 8)
-    ]
+    @State
+    private var viewModel: MoviesListViewModel
     
     init(viewModel: MoviesListViewModel = MoviesListViewModel()) {
         self.viewModel = viewModel
     }
     
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns) {
-                ForEach(viewModel.movies) { movie in
-                    NavigationLink(value: movie) {
-                        PosterView(
-                            details: .init(
-                                url: movie.url,
-                                title: movie.title
-                            )
-                        )
+        Group {
+            switch viewModel.state {
+            case .loading:
+                ProgressView()
+            case .success(let movies):
+                ListView(movies: movies)
+            case .failure:
+                FailureView(message: "Falha ao buscar os filmes") {
+                    Task {
+                        await viewModel.fetch()
                     }
                 }
+            case .empty:
+                NoMoviesFoundView()
             }
         }
         .navigationDestination(for: MoviePresentable.self) { movie in
@@ -61,7 +59,7 @@ final class MoviesListServicePreview: MoviesListServicing {
             results: [
                 .init(
                     id: 1,
-                    imagePath: "https://mdias.imagemfilmes.com.br/capas/d536dc70-5e53-46d0-82ce-31a314f542c3_m.jpg?2025-07-31T13:42:56.347024",
+                    imagePath: "https://midias.imagemfilmes.com.br/capas/d536dc70-5e53-46d0-82ce-31a314f542c3_m.jpg?2025-07-31T13:42:56.347024",
                     release: .now,
                     title: "A Guerra dos Mundos",
                     overview: ""

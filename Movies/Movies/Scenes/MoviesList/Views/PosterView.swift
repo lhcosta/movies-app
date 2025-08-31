@@ -15,22 +15,29 @@ struct PosterView: View {
     let details: PosterDetails
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            AsyncImage(url: details.url) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-            } placeholder: {
-                Image(systemName: "photo.artframe")
-                    .resizable()
-                    .scaledToFit()
-                    .tint(.gray)
+        VStack(alignment: .leading, spacing: 12) {            
+            CachedAsyncImage(url: details.url) { result in
+                switch result {
+                case .empty:
+                    ProgressView()
+                        .frame(width: 100, height: 100)
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFit()
+                default:
+                    Image(systemName: "photo.artframe")
+                        .resizable()
+                        .scaledToFit()
+                        .tint(.gray)
+                }
             }
             .frame(height: 250)
             
             Text(details.title)
                 .font(.callout)
                 .foregroundColor(.primary)
+                .lineLimit(1)
                 .bold()
         }
         .padding()
