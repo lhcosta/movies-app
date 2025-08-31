@@ -7,7 +7,7 @@
 import UIKit
 
 struct MovieDetails {
-    let imageURL: String?
+    let imageURL: URL?
     let description: String
     let title: String
     let releaseDate: Date

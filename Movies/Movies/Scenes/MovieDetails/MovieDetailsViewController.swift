@@ -10,7 +10,7 @@ import UIKit
 final class MovieDetailsViewController: UIViewController {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -68,8 +68,7 @@ final class MovieDetailsViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             imageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4),
 
             contentStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
@@ -81,9 +80,23 @@ final class MovieDetailsViewController: UIViewController {
 
 // MARK: MovieDetailsDelegate
 extension MovieDetailsViewController: MovieDetailsDelegate {
-    func updateView(title: String, subtitle: String, description: String) {
+    func updateView(title: String, subtitle: String, description: String, imageURL: URL?) {
         titleLabel.text = title
         subtitleLabel.text = subtitle
         descriptionLabel.text = description
+        imageView.load(from: imageURL)
+    }
+}
+
+import SwiftUI
+
+extension UIImageView {
+    func load(from url: URL?) {
+        do {
+            let image = try ImageService.shared.fetch(url: url)
+            self.image = ImageRenderer(content: image).uiImage
+        } catch {
+            self.image = nil
+        }
     }
 }
