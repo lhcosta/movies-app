@@ -62,35 +62,35 @@ final class MoviesListServicePreview: MoviesListServicing {
                 .init(
                     id: 1,
                     imagePath: "https://mdias.imagemfilmes.com.br/capas/d536dc70-5e53-46d0-82ce-31a314f542c3_m.jpg?2025-07-31T13:42:56.347024",
-                    release: "",
+                    release: .now,
                     title: "A Guerra dos Mundos",
                     overview: ""
                 ),
                 .init(
                     id: 2,
                     imagePath: "https://midias.imagemfilmes.com.br/capas/d536dc70-5e53-46d0-82ce-31a314f542c3_m.jpg?2025-07-31T13:42:56.347024",
-                    release: "",
+                    release: .now,
                     title: "A Guerra dos Mundos",
                     overview: ""
                 ),
                 .init(
                     id: 3,
                     imagePath: "https://midias.imagemfilmes.com.br/capas/d536dc70-5e53-46d0-82ce-31a314f542c3_m.jpg?2025-07-31T13:42:56.347024",
-                    release: "",
+                    release: .now,
                     title: "A Guerra dos Mundos",
                     overview: ""
                 ),
                 .init(
                     id: 4,
                     imagePath: "https://midias.imagemfilmes.com.br/capas/d536dc70-5e53-46d0-82ce-31a314f542c3_m.jpg?2025-07-31T13:42:56.347024",
-                    release: "",
+                    release: .now,
                     title: "A Guerra dos Mundos",
                     overview: ""
                 ),
                 .init(
                     id: 5,
                     imagePath: "https://midias.imagemfilmes.com.br/capas/d536dc70-5e53-46d0-82ce-31a314f542c3_m.jpg?2025-07-31T13:42:56.347024",
-                    release: "",
+                    release: .now,
                     title: "A Guerra dos Mundos",
                     overview: ""
                 )

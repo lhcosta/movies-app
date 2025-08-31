@@ -35,7 +35,11 @@ struct MoviesListService: MoviesListServicing {
     
     func fetchMovies() async throws -> MoviesResponse {
         let decoder = JSONDecoder()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
         decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
         
         let result = try await network.request(
             type: MoviesListService.Root.self,
@@ -59,7 +63,7 @@ private extension MoviesListService {
     struct MovieDecodable: Decodable {
         let id: Int
         let posterPath: String?
-        let releaseDate: String
+        let releaseDate: Date
         let title: String
         let overview: String
     }

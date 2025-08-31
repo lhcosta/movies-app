@@ -18,6 +18,12 @@ final class MovieDetailsViewModel: MovieDetailsViewModeling {
     private let details: MovieDetails
     weak var delegate: MovieDetailsDelegate?
     
+    private lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/YYYY"
+        return formatter
+    }()
+    
     init(details: MovieDetails) {
         self.details = details
     }
@@ -26,7 +32,7 @@ final class MovieDetailsViewModel: MovieDetailsViewModeling {
         delegate?.updateView(
             title: details.title,
             subtitle: details.description,
-            description: "Criado em \(details.releaseDate)"
+            description: "Criado em \(dateFormatter.string(from: details.releaseDate))"
         )
     }
 }

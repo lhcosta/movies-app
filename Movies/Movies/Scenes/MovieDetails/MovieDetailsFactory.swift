@@ -10,7 +10,7 @@ struct MovieDetails {
     let imageURL: String?
     let description: String
     let title: String
-    let releaseDate: String
+    let releaseDate: Date
 }
 
 protocol MovieDetailsFactoring {

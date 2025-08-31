@@ -17,7 +17,7 @@ struct MoviesResponse {
 struct Movie: Identifiable, Hashable {
     let id: Int
     let imagePath: String?
-    let release: String
+    let release: Date
     let title: String
     let overview: String
 }
