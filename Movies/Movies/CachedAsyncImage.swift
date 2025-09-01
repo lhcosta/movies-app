@@ -19,9 +19,6 @@ struct CachedAsyncImage<Content: View>: View {
         self.content = content
     }
     
-    @State
-    private var image: UIImage?
-    
     var body: some View {
         if let image = try? ImageService.shared.fetch(url: url) {
             content(.success(image))
@@ -30,7 +27,10 @@ struct CachedAsyncImage<Content: View>: View {
                 if case .success(let image) = result {
                     content(.success(image))
                         .task {
-                            ImageService.shared.save(image: image, at: url)
+                            ImageService.shared.save(
+                                image: image,
+                                at: url
+                            )
                         }
                 } else {
                     content(result)
