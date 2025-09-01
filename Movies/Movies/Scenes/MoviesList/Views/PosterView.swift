@@ -47,7 +47,7 @@ struct PosterView: View {
 #Preview {
     PosterView(
         details: .init(
-            url: .init(string: "https://mdias.imagemfilmes.com.br/capas/d536dc70-5e53-46d0-82ce-31a314f542c3_m.jpg?2025-07-31T13:42:56.347024"),
+            url: .init(string: "https://midias.imagemfilmes.com.br/capas/d536dc70-5e53-46d0-82ce-31a314f542c3_m.jpg?2025-07-31T13:42:56.347024"),
             title: "A Guerra dos Mundos"
         )
     )
