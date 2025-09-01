@@ -10,6 +10,8 @@ import SwiftUI
 struct MoviesListView: View {
     @State
     private var viewModel: MoviesListViewModel
+    @State
+    private var isSelectedMovieNotFound = false
     
     init(viewModel: MoviesListViewModel = MoviesListViewModel()) {
         self.viewModel = viewModel
@@ -33,9 +35,12 @@ struct MoviesListView: View {
             }
         }
         .navigationDestination(for: MoviePresentable.self) { movie in
-            MovieDetailsViewRepresentable(
-                details: viewModel.selectMovie(with: movie.id)
-            )
+            if let details = try? viewModel.selectMovie(with: movie.id) {
+                MovieDetailsView(details: details)
+            } else {
+                Text("Falha ao carregar os detalhes do filme")
+                    .foregroundColor(.red)
+            }
         }
         .navigationTitle("Filmes")
         .task {

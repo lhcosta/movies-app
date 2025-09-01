@@ -37,7 +37,7 @@ enum MovieListViewState {
 
 @Observable
 final class MoviesListViewModel {
-    var state: MovieListViewState = .empty
+    private(set) var state: MovieListViewState = .empty
     private let service: MoviesListServicing
     
     @ObservationIgnored
@@ -60,8 +60,11 @@ final class MoviesListViewModel {
         }
     }
     
-    func selectMovie(with id: Int) -> MovieDetails {
-        let movie = results.first(where: { $0.id == id })!
+    func selectMovie(with id: Int) throws -> MovieDetails {        
+        guard let movie = results.first(where: { $0.id == id }) else {
+            throw MoviesListError.movieNotFound
+        }
+        
         return MovieDetails(
             imageURL: ImageURLFactory.make(path: movie.imagePath),
             description: movie.overview,

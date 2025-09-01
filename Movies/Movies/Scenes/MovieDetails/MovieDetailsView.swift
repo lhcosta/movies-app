@@ -8,7 +8,7 @@
 import SwiftUI
 
 // Demonstrando o uso de SwiftUI com feature em UIKit
-struct MovieDetailsViewRepresentable: UIViewControllerRepresentable {
+struct MovieDetailsView: UIViewControllerRepresentable {
     typealias UIViewControllerType = MovieDetailsViewController
     private let factory: MovieDetailsFactoring
     private let details: MovieDetails
