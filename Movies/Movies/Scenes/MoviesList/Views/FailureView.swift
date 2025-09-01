@@ -35,7 +35,6 @@ struct FailureView: View {
             .controlSize(.large)
         }
         .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
