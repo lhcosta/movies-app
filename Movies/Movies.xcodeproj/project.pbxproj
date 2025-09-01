@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A46A52FC2E63BAD800BFA631 /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = A46A52FB2E63BAD800BFA631 /* Storage */; };
 		A4B8C4BC2E62B335005D98F5 /* CoreNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = A4B8C4BB2E62B335005D98F5 /* CoreNetwork */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A46A52FC2E63BAD800BFA631 /* Storage in Frameworks */,
 				A4B8C4BC2E62B335005D98F5 /* CoreNetwork in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -126,6 +128,7 @@
 			name = Movies;
 			packageProductDependencies = (
 				A4B8C4BB2E62B335005D98F5 /* CoreNetwork */,
+				A46A52FB2E63BAD800BFA631 /* Storage */,
 			);
 			productName = Movies;
 			productReference = A4B8C4902E62B07F005D98F5 /* Movies.app */;
@@ -409,6 +412,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3H798M6N3T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -436,6 +440,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3H798M6N3T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -566,6 +571,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A46A52FB2E63BAD800BFA631 /* Storage */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Storage;
+		};
 		A4B8C4BB2E62B335005D98F5 /* CoreNetwork */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CoreNetwork;
