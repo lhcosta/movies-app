@@ -8,7 +8,6 @@ public enum NetworkError: Error {
 
 public protocol CoreNetworking {
     func request<Model: Decodable>(
-        type: Model.Type,
         endpoint: APIEndpoint,
         decoder: JSONDecoder
     ) async throws -> Model
@@ -16,10 +15,9 @@ public protocol CoreNetworking {
 
 public extension CoreNetworking {
     func request<Model: Decodable>(
-        type: Model.Type,
         endpoint: APIEndpoint
     ) async throws -> Model {
-        try await request(type: type, endpoint: endpoint, decoder: JSONDecoder())
+        try await request(endpoint: endpoint, decoder: JSONDecoder())
     }
 }
 
@@ -31,7 +29,6 @@ public final class CoreNetwork: CoreNetworking {
     }
     
     public func request<Model: Decodable>(
-        type: Model.Type,
         endpoint: APIEndpoint,
         decoder: JSONDecoder
     ) async throws -> Model {

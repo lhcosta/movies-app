@@ -41,8 +41,7 @@ struct MoviesListService: MoviesListServicing {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .formatted(dateFormatter)
         
-        let result = try await network.request(
-            type: MoviesListService.Root.self,
+        let result: MoviesListService.Root = try await network.request(
             endpoint: MoviesAPIEndpoint(),
             decoder: decoder
         )
