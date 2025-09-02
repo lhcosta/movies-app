@@ -87,16 +87,3 @@ extension MovieDetailsViewController: MovieDetailsDelegate {
         imageView.load(from: imageURL)
     }
 }
-
-import SwiftUI
-
-extension UIImageView {
-    func load(from url: URL?) {
-        do {
-            let image = try ImageService.shared.fetch(url: url)
-            self.image = ImageRenderer(content: image).uiImage
-        } catch {
-            self.image = nil
-        }
-    }
-}
