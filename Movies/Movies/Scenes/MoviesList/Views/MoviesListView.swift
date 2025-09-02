@@ -11,7 +11,7 @@ struct MoviesListView: View {
     @State
     private var viewModel: MoviesListViewModel
     
-    init(viewModel: MoviesListViewModel = MoviesListViewModel()) {
+    init(viewModel: MoviesListViewModel) {
         self.viewModel = viewModel
     }
     
@@ -51,7 +51,10 @@ struct MoviesListView: View {
 #Preview {
     NavigationStack {
         MoviesListView(
-            viewModel: .init(service: MoviesListServicePreview())
+            viewModel: .init(
+                service: MoviesListServicePreview(),
+                resolver: DependencyContainer.shared
+            )
         )
     }
 }

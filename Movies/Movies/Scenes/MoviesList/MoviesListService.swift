@@ -27,12 +27,16 @@ protocol MoviesListServicing {
 }
 
 struct MoviesListService: MoviesListServicing {
-    private let network: CoreNetworking
+    private let resolver: DependencyResolving
     
-    init(network: CoreNetworking = CoreNetwork()) {
-        self.network = network
+    private var network: CoreNetworking {
+        resolver.resolve(CoreNetworking.self)
     }
     
+    init(resolver: DependencyResolving = DependencyContainer.shared) {
+        self.resolver = resolver
+    }
+
     func fetchMovies() async throws -> MoviesResponse {
         let decoder = JSONDecoder()
         let dateFormatter = DateFormatter()

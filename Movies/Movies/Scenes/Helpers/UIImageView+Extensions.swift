@@ -9,9 +9,12 @@
 import SwiftUI
 
 extension UIImageView {
-    func load(from url: URL?) {
+    func load(
+        from url: URL?,
+        service: ImageServicing = ImageService()
+    ) {
         do {
-            let image = try ImageService.shared.fetch(url: url)
+            let image = try service.fetch(url: url)
             self.image = ImageRenderer(content: image).uiImage
         } catch {
             self.image = nil

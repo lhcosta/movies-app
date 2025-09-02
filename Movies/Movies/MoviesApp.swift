@@ -9,10 +9,18 @@ import SwiftUI
 
 @main
 struct MoviesApp: App {
+    @StateObject
+    private var container = DependencyContainer.shared
+    
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                MoviesListView()
+                MoviesListView(
+                    viewModel: MoviesListViewModel(
+                        service: MoviesListService(resolver: container),
+                        resolver: container
+                    )
+                )
             }
         }
     }
