@@ -37,7 +37,6 @@ jobs:
           xcodebuild \
             -workspace App.xcworkspace \
             -scheme Movies \
-            -sdk iphonesimulator \
             clean build
 
       # Rodar testes
@@ -46,5 +45,4 @@ jobs:
           xcodebuild \
             -workspace App.xcworkspace \
             -scheme MoviesTests \
-            -sdk iphonesimulator \
             test
