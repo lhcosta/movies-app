@@ -10,8 +10,6 @@ import SwiftUI
 struct MoviesListView: View {
     @State
     private var viewModel: MoviesListViewModel
-    @State
-    private var isSelectedMovieNotFound = false
     
     init(viewModel: MoviesListViewModel = MoviesListViewModel()) {
         self.viewModel = viewModel
@@ -58,7 +56,7 @@ struct MoviesListView: View {
     }
 }
 
-final class MoviesListServicePreview: MoviesListServicing {
+private struct MoviesListServicePreview: MoviesListServicing {
     func fetchMovies() async throws -> MoviesResponse {
         .init(
             page: 1,
