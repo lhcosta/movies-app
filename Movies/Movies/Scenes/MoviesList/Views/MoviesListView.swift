@@ -34,6 +34,7 @@ struct MoviesListView: View {
                 NoMoviesFoundView()
             }
         }
+        .padding(.horizontal, 8)
         .navigationDestination(for: MoviePresentable.self) { movie in
             if let details = try? viewModel.selectMovie(with: movie.id) {
                 MovieDetailsView(details: details)
@@ -97,9 +98,7 @@ final class MoviesListServicePreview: MoviesListServicing {
                     title: "A Guerra dos Mundos",
                     overview: ""
                 )
-            ],
-            totalPages: 2,
-            totalResults: 30
+            ]
         )
     }
 }

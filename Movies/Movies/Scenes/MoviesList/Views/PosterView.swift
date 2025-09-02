@@ -12,15 +12,17 @@ struct PosterDetails {
 }
 
 struct PosterView: View {
+    private let imageSize: CGSize = .init(width: 200, height: 250)
     let details: PosterDetails
-
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {            
+        VStack(alignment: .center, spacing: 12) {
             CachedAsyncImage(url: details.url) { result in
                 switch result {
                 case .empty:
                     ProgressView()
-                        .frame(width: 100, height: 100)
+                        .foregroundStyle(.blue)
+                    
                 case .success(let image):
                     image
                         .resizable()
@@ -29,18 +31,23 @@ struct PosterView: View {
                     Image(systemName: "photo.artframe")
                         .resizable()
                         .scaledToFit()
-                        .tint(.gray)
+                        .tint(.accentColor)
                 }
             }
-            .frame(height: 250)
-            
+            .cornerRadius(4)
+            .frame(width: imageSize.width, height: imageSize.height)
+
             Text(details.title)
                 .font(.callout)
-                .foregroundColor(.primary)
+                .foregroundColor(.accentColor)
                 .lineLimit(1)
                 .bold()
         }
         .padding()
+        .frame(width: imageSize.width)
+        .background(Color.black.opacity(0.4))
+        .cornerRadius(8)
+        .shadow(color: .gray, radius: 3, x: 0, y: 3)
     }
 }
 

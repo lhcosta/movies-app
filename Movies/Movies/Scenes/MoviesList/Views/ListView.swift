@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ListView: View {
     private let columns = [
-        GridItem(.flexible(), spacing: 8),
-        GridItem(.flexible(), spacing: 8)
+        GridItem(.flexible(), spacing: 12),
+        GridItem(.flexible(), spacing: 12)
     ]
     
     let movies: [MoviePresentable]
