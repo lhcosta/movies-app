@@ -37,6 +37,7 @@ jobs:
           xcodebuild \
             -workspace App.xcworkspace \
             -scheme Movies \
+            CODE_SIGNING_ALLOWED=NO \
             clean build
 
       # Rodar testes
@@ -45,4 +46,5 @@ jobs:
           xcodebuild \
             -workspace App.xcworkspace \
             -scheme MoviesTests \
+            CODE_SIGNING_ALLOWED=NO \
             test
