@@ -14,6 +14,7 @@ struct MoviesApp: App {
     
     var body: some Scene {
         WindowGroup {
+            #if !TEST
             NavigationStack {
                 MoviesListView(
                     viewModel: MoviesListViewModel(
@@ -22,6 +23,9 @@ struct MoviesApp: App {
                     )
                 )
             }
+            #else
+            EmptyView()
+            #endif
         }
     }
 }

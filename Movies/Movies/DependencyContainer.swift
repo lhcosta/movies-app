@@ -13,7 +13,7 @@ protocol DependencyResolving {
     func resolve<T>(_ type: T.Type) -> T
 }
 
-final class DependencyContainer: DependencyResolving {
+final class DependencyContainer: ObservableObject, DependencyResolving {
     static let shared = DependencyContainer()
     private var registrations = [String: Any]()
 
