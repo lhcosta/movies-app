@@ -6,13 +6,6 @@
 //
 import UIKit
 
-struct MovieDetails {
-    let imageURL: URL?
-    let description: String
-    let title: String
-    let releaseDate: Date
-}
-
 protocol MovieDetailsFactoring {
     func make(details: MovieDetails) -> MovieDetailsViewController
 }

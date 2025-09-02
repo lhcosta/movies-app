@@ -27,14 +27,17 @@ enum ImageError: Error {
     case createImage
 }
 
-final class ImageService: ImageServicing {
-    private let cache: ImageMemoryCaching
-    static let shared = ImageService()
+struct ImageService: ImageServicing {
+    private let resolver: DependencyResolving
     
-    private init(cache: ImageMemoryCaching = ImageMemoryCache()) {
-        self.cache = cache
+    private var cache: ImageMemoryCaching {
+        resolver.resolve(ImageMemoryCaching.self)
     }
     
+    init(resolver: DependencyResolving = DependencyContainer.shared) {
+        self.resolver = resolver
+    }
+        
     func fetch(url: URL?) throws -> Image {
         guard let url else { throw NetworkError.badURL }
         return try cache.fetch(identifier: url.absoluteString)

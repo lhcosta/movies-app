@@ -43,7 +43,7 @@ final class MoviesListViewModel {
     @ObservationIgnored
     private var results: [Movie] = []
     
-    init(service: MoviesListServicing = MoviesListService()) {
+    init(service: MoviesListServicing) {
         self.service = service
     }
     

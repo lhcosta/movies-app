@@ -41,8 +41,11 @@ struct MoviesListServiceTests {
     
     // MARK: Helpers
     private func makeSut() -> Args {
+        let container = MockDependencyContainer()
         let coreNetworkMock = CoreNetworkMock()
-        let sut = MoviesListService(network: coreNetworkMock)
+        container.mock(CoreNetworking.self, with: coreNetworkMock)
+        
+        let sut = MoviesListService(resolver: container)
         return .init(coreNetworkMock: coreNetworkMock, sut: sut)
     }
 }
