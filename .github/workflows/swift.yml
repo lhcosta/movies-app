@@ -36,7 +36,5 @@ jobs:
           xcodebuild \
             -workspace App.xcworkspace \
             -scheme Movies \
-            -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.2' \
             clean build test \
             CODE_SIGNING_ALLOWED=NO
