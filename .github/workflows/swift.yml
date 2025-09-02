@@ -31,20 +31,12 @@ jobs:
           </plist>
           EOL
 
-      # Build do projeto
-      - name: Build
+      - name: Build & Test
         run: |
           xcodebuild \
             -workspace App.xcworkspace \
             -scheme Movies \
-            CODE_SIGNING_ALLOWED=NO \
-            clean build
-
-      # Rodar testes
-      - name: Run tests
-        run: |
-          xcodebuild \
-            -workspace App.xcworkspace \
-            -scheme MoviesTests \
-            CODE_SIGNING_ALLOWED=NO \
-            test
+            -sdk iphonesimulator \
+            -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.2' \
+            clean build test \
+            CODE_SIGNING_ALLOWED=NO
