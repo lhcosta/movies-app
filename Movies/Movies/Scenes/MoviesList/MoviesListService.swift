@@ -84,9 +84,7 @@ private extension MoviesListService.Root {
     var mapToResponse: MoviesResponse {
         .init(
             page: page,
-            results: results.map(\.movies),
-            totalPages: totalPages,
-            totalResults: totalResults
+            results: results.map(\.movies)
         )
     }
 }
