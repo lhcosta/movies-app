@@ -14,17 +14,24 @@ struct MoviesApp: App {
     
     var body: some Scene {
         WindowGroup {
-            #if !TEST
-            NavigationStack {
-                MoviesListView(
-                    viewModel: MoviesListViewModel(
-                        service: MoviesListService(resolver: container)
+            if ProcessInfo.processInfo.isRunningUnitTests {
+                EmptyView()
+            } else {
+                NavigationStack {
+                    MoviesListView(
+                        viewModel: MoviesListViewModel(
+                            service: MoviesListService(resolver: container)
+                        )
                     )
-                )
+                }
             }
-            #else
-            EmptyView()
-            #endif
         }
+    }
+}
+
+// MARK: Helpers
+private extension ProcessInfo {
+    var isRunningUnitTests: Bool {
+        return environment["XCTestConfigurationFilePath"] != nil
     }
 }
