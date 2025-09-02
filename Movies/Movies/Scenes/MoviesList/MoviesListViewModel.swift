@@ -39,14 +39,12 @@ enum MovieListViewState {
 final class MoviesListViewModel {
     private(set) var state: MovieListViewState = .empty
     private let service: MoviesListServicing
-    private let resolver: DependencyResolving
     
     @ObservationIgnored
     private var results: [Movie] = []
     
-    init(service: MoviesListServicing, resolver: DependencyResolving) {
+    init(service: MoviesListServicing) {
         self.service = service
-        self.resolver = resolver
     }
     
     @MainActor

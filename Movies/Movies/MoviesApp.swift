@@ -18,8 +18,7 @@ struct MoviesApp: App {
             NavigationStack {
                 MoviesListView(
                     viewModel: MoviesListViewModel(
-                        service: MoviesListService(resolver: container),
-                        resolver: container
+                        service: MoviesListService(resolver: container)
                     )
                 )
             }
