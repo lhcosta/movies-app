@@ -52,8 +52,7 @@ struct MoviesListView: View {
     NavigationStack {
         MoviesListView(
             viewModel: .init(
-                service: MoviesListServicePreview(),
-                resolver: DependencyContainer.shared
+                service: MoviesListServicePreview()
             )
         )
     }
